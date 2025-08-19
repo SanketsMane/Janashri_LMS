@@ -279,6 +279,117 @@
   .dashboard-label {
     @apply text-sm text-neutral-500 font-medium;
   }
+
+  /* Modern Student Dashboard */
+  .stat-card {
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group cursor-pointer;
+  }
+
+  .stat-card:hover {
+    @apply scale-105;
+  }
+
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-2 transition-all duration-500;
+  }
+
+  .progress-fill {
+    @apply rounded-full h-2 transition-all duration-500 ease-out;
+  }
+
+  .sidebar-item {
+    @apply flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 hover:scale-105;
+  }
+
+  .sidebar-item.active {
+    @apply bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg;
+  }
+
+  .sidebar-item:not(.active) {
+    @apply text-gray-700 hover:bg-gray-100;
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Glass morphism effects */
+  .glass-card {
+    @apply backdrop-blur-glass bg-white/20 border border-white/20 rounded-2xl shadow-lg;
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Hover animations for cards */
+  .hover-lift {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-2 shadow-xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #2563EB, #10B981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400;
+  }
+
+  /* Notification badge */
+  .notification-badge {
+    @apply absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium;
+  }
+
+  /* Priority indicators */
+  .priority-high {
+    @apply bg-red-100 text-red-700 border-red-200;
+  }
+
+  .priority-medium {
+    @apply bg-yellow-100 text-yellow-700 border-yellow-200;
+  }
+
+  .priority-low {
+    @apply bg-green-100 text-green-700 border-green-200;
+  }
   
   /* Loading */
   .loading {

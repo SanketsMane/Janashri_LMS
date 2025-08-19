@@ -97,7 +97,7 @@ const AppRoutes = () => {
         } 
       />
 
-      {/* Student Routes - Using StudentLayout */}
+      {/* Student Routes - Using StudentLayout without AppLayout */}
       <Route 
         path="/student/dashboard" 
         element={
@@ -110,9 +110,7 @@ const AppRoutes = () => {
         path="/student/profile" 
         element={
           <ProtectedRoute requiredRole="student">
-            <StudentLayout>
-              <StudentProfile />
-            </StudentLayout>
+            <StudentProfile />
           </ProtectedRoute>
         } 
       />
@@ -120,9 +118,7 @@ const AppRoutes = () => {
         path="/student/id-card" 
         element={
           <ProtectedRoute requiredRole="student">
-            <StudentLayout>
-              <StudentIdCard />
-            </StudentLayout>
+            <StudentIdCard />
           </ProtectedRoute>
         } 
       />
@@ -130,9 +126,7 @@ const AppRoutes = () => {
         path="/student/settings" 
         element={
           <ProtectedRoute requiredRole="student">
-            <StudentLayout>
-              <AccountSettings />
-            </StudentLayout>
+            <AccountSettings />
           </ProtectedRoute>
         } 
       />
@@ -190,6 +184,17 @@ const AppRoutes = () => {
           </ProtectedRoute>
         } 
       />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/student/settings" 
+        element={
+          <ProtectedRoute requiredRole="student">
+            <AppLayout><AccountSettings /></AppLayout>
+          </ProtectedRoute>
+        } 
+      />
 
       {/* Admin Routes */}
       <Route 
@@ -225,21 +230,23 @@ const AppRoutes = () => {
         } 
       />
 
-      {/* Catch all route - redirect to appropriate dashboard */}
+      {/* Catch all route - redirect to home */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };
 
 // Main App Component
-const App = () => {
+function App() {
   return (
     <AuthProvider>
       <Router>
-        <AppRoutes />
+        <div className="App">
+          <AppRoutes />
+        </div>
       </Router>
     </AuthProvider>
   );
-};
+}
 
 export default App;

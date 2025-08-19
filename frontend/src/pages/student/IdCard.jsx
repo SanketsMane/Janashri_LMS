@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { studentAPI } from '../../utils/api';
+import StudentLayout from '../../components/student/StudentLayout';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {
@@ -159,8 +160,7 @@ const IdCard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      <div className="container py-8">
+    <div className="space-y-8">
         {/* Header */}
         <div className="mb-12">
           <div className="card p-8 bg-gradient-to-br from-primary-600 to-secondary-600 text-white relative overflow-hidden">
@@ -690,7 +690,6 @@ const IdCard = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };

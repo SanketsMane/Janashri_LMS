@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { studentAPI } from '../../utils/api';
+import StudentLayout from '../../components/student/StudentLayout';
 import {
   CogIcon,
   ShieldCheckIcon,
@@ -125,8 +126,8 @@ const AccountSettings = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-neutral-50">
-      <div className="container mx-auto px-4 py-8">
+      return (
+    <div className="space-y-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-2">
@@ -331,7 +332,6 @@ const AccountSettings = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
