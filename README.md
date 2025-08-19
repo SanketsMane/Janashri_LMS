@@ -281,7 +281,7 @@ The application is fully responsive and works seamlessly on:
 ## 📞 Support
 
 For support or questions:
-- Email: support@janashiri.edu
+- Email: contactsanket1@gmail.com
 - Documentation: Refer to inline code comments
 - Issues: Use GitHub issues for bug reports
 
@@ -291,4 +291,4 @@ This project is licensed under the ISC License.
 
 ---
 
-**Built with ❤️ by the Janashiri Development Team**
+**Built with ❤️ by Sanket Mane**
