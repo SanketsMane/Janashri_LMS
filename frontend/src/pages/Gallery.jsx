@@ -1,82 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   PhotoIcon,
   XMarkIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  EyeIcon
+  EyeIcon,
+  ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
-  // Sample gallery data (replace with API data)
-  const galleryImages = [
-    {
-      id: 1,
-      title: 'Campus Building',
-      category: 'Campus',
-      image: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&h=600&fit=crop',
-      description: 'Main academic building with modern facilities'
-    },
-    {
-      id: 2,
-      title: 'Science Laboratory',
-      category: 'Facilities',
-      image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop',
-      description: 'State-of-the-art science laboratory'
-    },
-    {
-      id: 3,
-      title: 'Library',
-      category: 'Facilities',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop',
-      description: 'Comprehensive library with digital resources'
-    },
-    {
-      id: 4,
-      title: 'Computer Lab',
-      category: 'Facilities',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
-      description: 'Modern computer laboratory'
-    },
-    {
-      id: 5,
-      title: 'Sports Ground',
-      category: 'Sports',
-      image: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&h=600&fit=crop',
-      description: 'Multi-purpose sports ground'
-    },
-    {
-      id: 6,
-      title: 'Student Activities',
-      category: 'Events',
-      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop',
-      description: 'Annual cultural festival celebration'
-    },
-    {
-      id: 7,
-      title: 'Classroom',
-      category: 'Campus',
-      image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=600&fit=crop',
-      description: 'Smart classroom with interactive boards'
-    },
-    {
-      id: 8,
-      title: 'Graduation Ceremony',
-      category: 'Events',
-      image: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&h=600&fit=crop',
-      description: 'Annual graduation ceremony'
+  // Fetch gallery images from API
+  const fetchGalleryImages = async (category = 'all') => {
+    try {
+      setLoading(true);
+      const queryParams = new URLSearchParams();
+      if (category !== 'all') {
+        queryParams.append('category', category);
+      }
+      
+      const response = await fetch(`/api/gallery?${queryParams.toString()}`);
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch gallery images');
+      }
+
+      const data = await response.json();
+      setGalleryImages(data.data.images);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
 
-  const categories = ['All', ...new Set(galleryImages.map(img => img.category))];
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  // Fetch images on component mount and category change
+  useEffect(() => {
+    fetchGalleryImages(selectedCategory);
+  }, [selectedCategory]);
 
-  const filteredImages = selectedCategory === 'All' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === selectedCategory);
+  const categories = ['all', 'Campus', 'Facilities', 'Sports', 'Events', 'Students', 'Faculty'];
 
   const openLightbox = (image, index) => {
     setSelectedImage(image);
@@ -89,11 +58,11 @@ const Gallery = () => {
 
   const navigateImage = (direction) => {
     const newIndex = direction === 'next' 
-      ? (currentIndex + 1) % filteredImages.length
-      : (currentIndex - 1 + filteredImages.length) % filteredImages.length;
+      ? (currentIndex + 1) % galleryImages.length
+      : (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     
     setCurrentIndex(newIndex);
-    setSelectedImage(filteredImages[newIndex]);
+    setSelectedImage(galleryImages[newIndex]);
   };
 
   return (
@@ -116,6 +85,16 @@ const Gallery = () => {
       </section>
 
       <div className="container py-16">
+        {/* Error Message */}
+        {error && (
+          <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-lg">
+            <div className="flex items-center justify-center">
+              <ExclamationTriangleIcon className="w-5 h-5 text-red-600 mr-2" />
+              <p className="text-red-800">{error}</p>
+            </div>
+          </div>
+        )}
+
         {/* Category Filter */}
         <div className="text-center mb-12">
           <div className="inline-flex bg-white rounded-2xl p-2 shadow-soft">
@@ -123,7 +102,7 @@ const Gallery = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 capitalize ${
                   selectedCategory === category
                     ? 'bg-primary-600 text-white shadow-soft'
                     : 'text-neutral-600 hover:text-primary-600 hover:bg-neutral-50'
@@ -135,39 +114,65 @@ const Gallery = () => {
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredImages.map((image, index) => (
-            <div
-              key={image.id}
-              className="gallery-item group cursor-pointer animate-fade-in"
-              onClick={() => openLightbox(image, index)}
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className="aspect-square overflow-hidden rounded-2xl bg-neutral-200">
-                <img
-                  src={image.image}
-                  alt={image.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="gallery-overlay">
-                  <div className="text-center text-white">
-                    <EyeIcon className="w-8 h-8 mx-auto mb-2" />
-                    <h3 className="font-semibold text-lg">{image.title}</h3>
-                    <p className="text-sm opacity-90">{image.category}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Empty State */}
-        {filteredImages.length === 0 && (
-          <div className="text-center py-16">
-            <PhotoIcon className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
-            <p className="text-neutral-500 text-lg">No images found in this category</p>
+        {/* Loading State */}
+        {loading ? (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
           </div>
+        ) : (
+          <>
+            {/* No Images Message */}
+            {galleryImages.length === 0 ? (
+              <div className="text-center py-12">
+                <PhotoIcon className="w-16 h-16 text-neutral-400 mx-auto mb-4" />
+                <p className="text-neutral-600 text-lg">No images found in the gallery</p>
+              </div>
+            ) : (
+              /* Gallery Grid */
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {galleryImages.map((image, index) => (
+                  <div
+                    key={image._id}
+                    className="gallery-item group cursor-pointer animate-fade-in bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+                    onClick={() => openLightbox(image, index)}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    {/* Image Container */}
+                    <div className="aspect-square overflow-hidden bg-neutral-200 relative">
+                      <img
+                        src={image.imageUrl || image.image}
+                        alt={image.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y1ZjVmNSIvPgogIDx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM5OTk5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5JbWFnZSBub3QgZm91bmQ8L3RleHQ+Cjwvc3ZnPg==';
+                        }}
+                      />
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                        <EyeIcon className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </div>
+                    
+                    {/* Image Info */}
+                    <div className="p-4">
+                      <h3 className="font-semibold text-neutral-900 text-lg mb-1 line-clamp-1">{image.title}</h3>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+                          {image.category}
+                        </span>
+                        <span className="text-xs text-neutral-500">
+                          {new Date(image.createdAt).toLocaleDateString()}
+                        </span>
+                      </div>
+                      {image.description && (
+                        <p className="text-sm text-neutral-600 line-clamp-2">{image.description}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
         )}
 
         {/* Stats Section */}
@@ -210,6 +215,7 @@ const Gallery = () => {
             >
               <ChevronLeftIcon className="w-6 h-6" />
             </button>
+
             <button
               onClick={() => navigateImage('next')}
               className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
@@ -219,7 +225,7 @@ const Gallery = () => {
 
             {/* Image */}
             <img
-              src={selectedImage.image}
+              src={selectedImage.imageUrl}
               alt={selectedImage.title}
               className="max-w-full max-h-[80vh] object-contain rounded-xl"
             />

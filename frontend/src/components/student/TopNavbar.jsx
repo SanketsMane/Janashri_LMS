@@ -65,7 +65,7 @@ const TopNavbar = ({ onSidebarToggle }) => {
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
       <div className="flex items-center justify-between px-4 py-3 lg:px-6">
         {/* Left Section */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3 lg:space-x-4">
           {/* Mobile Menu Button */}
           <button
             onClick={onSidebarToggle}
@@ -83,7 +83,7 @@ const TopNavbar = ({ onSidebarToggle }) => {
                 placeholder="Search courses, books, exams..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-80 pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                className="w-64 lg:w-80 pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
           </form>

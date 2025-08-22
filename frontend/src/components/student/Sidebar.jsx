@@ -14,7 +14,7 @@ import {
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
 
-const Sidebar = ({ isOpen, onToggle, onClose }) => {
+const Sidebar = ({ isOpen, onToggle, onClose, onCollapse }) => {
   const location = useLocation();
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -70,7 +70,11 @@ const Sidebar = ({ isOpen, onToggle, onClose }) => {
   ];
 
   const handleToggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
+    const newCollapsedState = !isCollapsed;
+    setIsCollapsed(newCollapsedState);
+    if (onCollapse) {
+      onCollapse(newCollapsedState);
+    }
   };
 
   return (
@@ -89,7 +93,7 @@ const Sidebar = ({ isOpen, onToggle, onClose }) => {
           fixed top-0 left-0 h-full bg-white shadow-2xl border-r border-gray-200 z-50 transition-all duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           ${isCollapsed ? 'w-20' : 'w-72'}
-          lg:translate-x-0 lg:relative lg:z-30
+          lg:translate-x-0 lg:z-30
         `}
       >
         {/* Header */}

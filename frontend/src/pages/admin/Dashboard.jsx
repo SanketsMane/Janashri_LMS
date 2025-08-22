@@ -14,7 +14,12 @@ import {
   ArrowTrendingUpIcon,
   ArrowRightIcon,
   AcademicCapIcon,
-  ShieldCheckIcon
+  ShieldCheckIcon,
+  BookOpenIcon,
+  BuildingLibraryIcon,
+  DocumentTextIcon,
+  QuestionMarkCircleIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
 
 const AdminDashboard = () => {
@@ -23,7 +28,12 @@ const AdminDashboard = () => {
     totalStudents: 0,
     pendingAdmissions: 0,
     totalContacts: 0,
-    approvedAdmissions: 0
+    approvedAdmissions: 0,
+    totalCourses: 0,
+    totalBooks: 0,
+    totalExams: 0,
+    totalTickets: 0,
+    totalGalleryImages: 0
   });
   const [recentAdmissions, setRecentAdmissions] = useState([]);
   const [recentContacts, setRecentContacts] = useState([]);
@@ -49,15 +59,32 @@ const AdminDashboard = () => {
       const contactsResponse = await publicAPI.getContacts({ limit: 5 });
       const contacts = contactsResponse.data.contacts || [];
 
+      // Fetch gallery data
+      const galleryResponse = await fetch('/api/gallery');
+      const galleryData = await galleryResponse.json();
+      const galleryImages = galleryData.success ? galleryData.data.images : [];
+
       // Calculate statistics
       const pendingAdmissions = admissions.filter(a => a.status === 'pending').length;
       const approvedAdmissions = admissions.filter(a => a.status === 'approved').length;
+
+      // TODO: Add API calls for new features when backend is ready
+      // const coursesResponse = await adminAPI.getCourses();
+      // const booksResponse = await adminAPI.getBooks();
+      // const examsResponse = await adminAPI.getExams();
+      // const ticketsResponse = await adminAPI.getSupportTickets();
+      // const galleryResponse = await adminAPI.getGalleryImages();
 
       setStats({
         totalStudents: students.length,
         pendingAdmissions: pendingAdmissions,
         totalContacts: contacts.length,
-        approvedAdmissions: approvedAdmissions
+        approvedAdmissions: approvedAdmissions,
+        totalCourses: 0, // TODO: Replace with coursesResponse.data.courses.length
+        totalBooks: 0, // TODO: Replace with booksResponse.data.books.length
+        totalExams: 0, // TODO: Replace with examsResponse.data.exams.length
+        totalTickets: 0, // TODO: Replace with ticketsResponse.data.tickets.length
+        totalGalleryImages: galleryImages.length
       });
 
       setRecentAdmissions(admissions);
@@ -70,7 +97,12 @@ const AdminDashboard = () => {
         totalStudents: 0,
         pendingAdmissions: 0,
         totalContacts: 0,
-        approvedAdmissions: 0
+        approvedAdmissions: 0,
+        totalCourses: 0,
+        totalBooks: 0,
+        totalExams: 0,
+        totalTickets: 0,
+        totalGalleryImages: 0
       });
       setRecentAdmissions([]);
       setRecentContacts([]);
@@ -101,6 +133,56 @@ const AdminDashboard = () => {
       label: 'Total Students'
     },
     {
+      title: 'Course Management',
+      description: 'Create, edit, and organize courses, curriculum, and learning materials',
+      icon: BookOpenIcon,
+      link: '/admin/courses',
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'bg-blue-50',
+      count: stats.totalCourses || 0,
+      label: 'Available Courses'
+    },
+    {
+      title: 'Library Management',
+      description: 'Manage books, resources, and digital library content for students',
+      icon: BuildingLibraryIcon,
+      link: '/admin/library',
+      color: 'from-emerald-500 to-emerald-600',
+      bgColor: 'bg-emerald-50',
+      count: stats.totalBooks || 0,
+      label: 'Library Books'
+    },
+    {
+      title: 'Exam Management',
+      description: 'Schedule exams, manage questions, and oversee student assessments',
+      icon: DocumentTextIcon,
+      link: '/admin/exams',
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'bg-purple-50',
+      count: stats.totalExams || 0,
+      label: 'Active Exams'
+    },
+    {
+      title: 'Help & Support',
+      description: 'Manage help documentation, FAQs, and provide student support',
+      icon: QuestionMarkCircleIcon,
+      link: '/admin/help',
+      color: 'from-indigo-500 to-indigo-600',
+      bgColor: 'bg-indigo-50',
+      count: stats.totalTickets || 0,
+      label: 'Support Tickets'
+    },
+    {
+      title: 'Gallery Management',
+      description: 'Upload, organize, and manage website gallery images and media',
+      icon: PhotoIcon,
+      link: '/admin/gallery',
+      color: 'from-rose-500 to-rose-600',
+      bgColor: 'bg-rose-50',
+      count: stats.totalGalleryImages || 0,
+      label: 'Gallery Images'
+    },
+    {
       title: 'Contact Management',
       description: 'Handle inquiries and communications from prospective students and parents',
       icon: PhoneIcon,
@@ -114,9 +196,9 @@ const AdminDashboard = () => {
       title: 'Analytics & Reports',
       description: 'Generate comprehensive reports and view system analytics dashboard',
       icon: ChartBarIcon,
-      link: '/admin/reports',
-      color: 'from-purple-500 to-purple-600',
-      bgColor: 'bg-purple-50',
+      link: '/admin/analytics',
+      color: 'from-pink-500 to-pink-600',
+      bgColor: 'bg-pink-50',
       count: '12+',
       label: 'Report Types'
     }
@@ -267,7 +349,7 @@ const AdminDashboard = () => {
         {/* Main Dashboard Cards */}
         <div className="mb-10">
           <h2 className="text-2xl font-bold text-neutral-900 mb-6">Management Centers</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {dashboardCards.map((card, index) => {
               const Icon = card.icon;
               return (
@@ -279,22 +361,22 @@ const AdminDashboard = () => {
                 >
                   <div className="card-body">
                     <div className="flex items-start justify-between mb-6">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${card.color} rounded-2xl flex items-center justify-center shadow-soft group-hover:shadow-lg transition-all duration-300`}>
-                        <Icon className="w-8 h-8 text-white" />
+                      <div className={`w-14 h-14 bg-gradient-to-r ${card.color} rounded-xl flex items-center justify-center shadow-soft group-hover:shadow-lg transition-all duration-300`}>
+                        <Icon className="w-7 h-7 text-white" />
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-neutral-900">{card.count}</div>
-                        <div className="text-sm text-neutral-500">{card.label}</div>
+                        <div className="text-xl font-bold text-neutral-900">{card.count}</div>
+                        <div className="text-xs text-neutral-500">{card.label}</div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                    <h3 className="text-lg font-bold text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
                       {card.title}
                     </h3>
-                    <p className="text-neutral-600 leading-relaxed mb-6">
+                    <p className="text-neutral-600 leading-relaxed mb-6 text-sm">
                       {card.description}
                     </p>
                     <div className="flex items-center text-primary-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
-                      <span>Manage</span>
+                      <span className="text-sm">Manage</span>
                       <ArrowRightIcon className="w-4 h-4 ml-2" />
                     </div>
                   </div>

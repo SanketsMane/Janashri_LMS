@@ -126,7 +126,6 @@ const AccountSettings = () => {
   ];
 
   return (
-      return (
     <div className="space-y-8">
         {/* Header */}
         <div className="mb-8">

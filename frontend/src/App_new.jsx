@@ -27,12 +27,6 @@ import AdminDashboard from './pages/admin/Dashboard';
 import AdminAdmissions from './pages/admin/Admissions';
 import AdminStudents from './pages/admin/Students';
 import AdminContacts from './pages/admin/Contacts';
-import AdminCourses from './pages/admin/Courses';
-import AdminLibrary from './pages/admin/Library';
-import AdminExams from './pages/admin/Exams';
-import AdminHelp from './pages/admin/Help';
-import AdminGallery from './pages/admin/Gallery';
-import Analytics from './pages/admin/Analytics';
 
 // Protected Route Components
 const ProtectedRoute = ({ children, requiredRole }) => {
@@ -227,54 +221,6 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute requiredRole="admin">
             <AppLayout><AdminContacts /></AppLayout>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/courses" 
-        element={
-          <ProtectedRoute requiredRole="admin">
-            <AppLayout><AdminCourses /></AppLayout>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/library" 
-        element={
-          <ProtectedRoute requiredRole="admin">
-            <AppLayout><AdminLibrary /></AppLayout>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/exams" 
-        element={
-          <ProtectedRoute requiredRole="admin">
-            <AppLayout><AdminExams /></AppLayout>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/help" 
-        element={
-          <ProtectedRoute requiredRole="admin">
-            <AppLayout><AdminHelp /></AppLayout>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/gallery" 
-        element={
-          <ProtectedRoute requiredRole="admin">
-            <AppLayout><AdminGallery /></AppLayout>
-          </ProtectedRoute>
-        } 
-      />
-      <Route 
-        path="/admin/analytics" 
-        element={
-          <ProtectedRoute requiredRole="admin">
-            <AppLayout><Analytics /></AppLayout>
           </ProtectedRoute>
         } 
       />

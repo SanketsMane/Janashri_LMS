@@ -4,6 +4,7 @@ import TopNavbar from '../../components/student/TopNavbar';
 
 const StudentLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);
@@ -13,6 +14,10 @@ const StudentLayout = ({ children }) => {
     setSidebarOpen(false);
   };
 
+  const handleSidebarCollapse = (collapsed) => {
+    setIsCollapsed(collapsed);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Sidebar */}
@@ -20,10 +25,13 @@ const StudentLayout = ({ children }) => {
         isOpen={sidebarOpen} 
         onToggle={handleSidebarToggle}
         onClose={handleSidebarClose}
+        onCollapse={handleSidebarCollapse}
       />
       
       {/* Main Content Area */}
-      <div className="lg:ml-72 min-h-screen flex flex-col">
+      <div className={`min-h-screen flex flex-col transition-all duration-300 ${
+        isCollapsed ? 'lg:ml-20' : 'lg:ml-72'
+      }`}>
         {/* Top Navbar */}
         <TopNavbar onSidebarToggle={handleSidebarToggle} />
         

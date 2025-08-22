@@ -11,6 +11,7 @@ import admissionRoutes from './routes/admission.js';
 import studentRoutes from './routes/student.js';
 import adminRoutes from './routes/admin.js';
 import publicRoutes from './routes/public.js';
+import galleryRoutes from './routes/gallery.js';
 
 dotenv.config();
 
@@ -43,6 +44,7 @@ app.use('/api/admission', admissionRoutes);
 app.use('/api/student', studentRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/public', publicRoutes);
+app.use('/api/gallery', galleryRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
