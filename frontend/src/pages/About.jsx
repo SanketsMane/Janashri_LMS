@@ -16,46 +16,46 @@ const About = () => {
   const values = [
     {
       icon: AcademicCapIcon,
-      title: 'Academic Excellence',
-      description: 'Commitment to highest standards of education and continuous learning',
+      title: 'Flexible Learning',
+      description: 'Distance and correspondence education designed for working professionals and busy learners',
       color: 'from-primary-500 to-primary-600'
     },
     {
       icon: HeartIcon,
-      title: 'Character Development',
-      description: 'Building strong moral values and ethical leadership qualities',
+      title: 'Personalized Support',
+      description: 'Guided admissions process with ongoing support throughout your educational journey',
       color: 'from-secondary-500 to-secondary-600'
     },
     {
       icon: LightBulbIcon,
-      title: 'Innovation',
-      description: 'Encouraging creativity and innovative thinking in all endeavors',
+      title: 'University Partnerships',
+      description: 'Access to recognized programs from reputed universities across India',
       color: 'from-orange-500 to-orange-600'
     },
     {
       icon: UserGroupIcon,
-      title: 'Community',
-      description: 'Fostering a supportive and inclusive learning environment',
+      title: 'Career Advancement',
+      description: 'Programs designed to help working professionals advance their careers',
       color: 'from-purple-500 to-purple-600'
     }
   ];
 
   const achievements = [
-    { number: '2010', label: 'Established' },
-    { number: '15+', label: 'Years of Excellence' },
-    { number: '2000+', label: 'Alumni Network' },
-    { number: '50+', label: 'Expert Faculty' },
-    { number: '100%', label: 'Success Rate' },
-    { number: '25+', label: 'Awards Won' }
+    { number: 'Karnataka', label: 'Based' },
+    { number: '10+', label: 'Years of Excellence' },
+    { number: '5000+', label: 'Students Guided' },
+    { number: '25+', label: 'Partner Universities' },
+    { number: '100+', label: 'Programs Available' },
+    { number: '2', label: 'Office Locations' }
   ];
 
   const features = [
-    'State-of-the-art infrastructure and modern facilities',
-    'Experienced and dedicated faculty members',
-    'Comprehensive curriculum aligned with industry standards',
-    'Strong alumni network and placement support',
-    'Focus on practical learning and skill development',
-    'Regular workshops and seminars by industry experts'
+    'Distance and correspondence education facilitation',
+    'Undergraduate, postgraduate, and diploma programs',
+    'Flexible schedules for working professionals',
+    'Guidance through admissions and university coordination',
+    'Multiple program streams: BBA, MBA, BA, MA, B.Com, M.Com, B.Sc, M.Sc, Social Work, PhD',
+    'Bangalore-based assistance with nationwide options'
   ];
 
   return (
@@ -67,11 +67,11 @@ const About = () => {
           <div className="max-w-4xl mx-auto animate-fade-in">
             <AcademicCapIcon className="w-16 h-16 text-white mx-auto mb-6" />
             <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-              About Janashiri Institute
+              About Jnana Siri Educational Institute
             </h1>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Excellence in Education Since 2010 - Nurturing Future Leaders with 
-              Innovation, Integrity, and Inspiration
+              Your trusted partner for distance and correspondence education - facilitating 
+              flexible learning pathways across undergraduate, postgraduate, and diploma programs
             </p>
           </div>
         </div>
@@ -82,16 +82,18 @@ const About = () => {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-6">
-              Our Legacy of Excellence
+              Who We Are
             </h2>
             <p className="text-lg text-neutral-600 leading-relaxed mb-8">
-              Janashiri Institute has been a beacon of educational excellence since 2010. 
-              Our commitment to nurturing young minds and shaping future leaders has made us 
-              one of the most trusted educational institutions in the region.
+              Jnana Siri Educational Institute is a facilitator of distance and correspondence education 
+              based in Karnataka. We specialize in providing flexible educational pathways across 
+              undergraduate, postgraduate, and diploma programs offered by multiple universities, 
+              emphasizing convenience and choice for learners.
             </p>
             <p className="text-lg text-neutral-600 leading-relaxed">
-              We believe that education is not just about academic achievement, but about 
-              developing well-rounded individuals who can contribute meaningfully to society.
+              Our approach is contact-first - we encourage visitors to connect with us via phone or email 
+              to start their educational journey. We provide comprehensive guidance through admissions 
+              and coordination with affiliated partner universities nationwide.
             </p>
           </div>
 
@@ -159,10 +161,10 @@ const About = () => {
               Core Values
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-6">
-              What Drives Us Forward
+              Our Core Values
             </h2>
             <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-              Our core values guide every decision we make and every program we design
+              Our values guide how we facilitate distance education and support our students' success
             </p>
           </div>
 

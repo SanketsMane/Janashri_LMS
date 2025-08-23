@@ -85,10 +85,14 @@ const Login = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-12 h-12 bg-gradient-to-r from-primary-600 to-secondary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">J</span>
+            <div className="w-12 h-12 flex items-center justify-center">
+              <img 
+                src="/jnana-siri-logo.png" 
+                alt="Jnana Siri Educational Institute" 
+                className="w-12 h-12 object-contain"
+              />
             </div>
-            <span className="text-2xl font-bold text-gray-900">Janashiri</span>
+            <span className="text-2xl font-bold text-gray-900">Jnana Siri</span>
           </Link>
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">

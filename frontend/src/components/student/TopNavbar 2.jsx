@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import ThemeToggleSwitch from '../ui/ThemeToggleSwitch';
 import {
   Bars3Icon,
   BellIcon,
   MagnifyingGlassIcon,
   UserCircleIcon,
   ChevronDownIcon,
+  SunIcon,
+  MoonIcon,
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/outline';
@@ -15,6 +16,7 @@ const TopNavbar = ({ onSidebarToggle }) => {
   const { user, logout } = useAuth();
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const notifications = [
@@ -49,34 +51,39 @@ const TopNavbar = ({ onSidebarToggle }) => {
     console.log('Searching for:', searchQuery);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    // Implement dark mode logic
+  };
+
   const handleLogout = () => {
     logout();
     setShowProfileDropdown(false);
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700 shadow-sm">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm">
       <div className="flex items-center justify-between px-4 py-3 lg:px-6">
         {/* Left Section */}
         <div className="flex items-center space-x-3 lg:space-x-4">
           {/* Mobile Menu Button */}
           <button
             onClick={onSidebarToggle}
-            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors"
           >
-            <Bars3Icon className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+            <Bars3Icon className="w-6 h-6 text-gray-600" />
           </button>
 
           {/* Search Bar */}
           <form onSubmit={handleSearch} className="hidden sm:block">
             <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 dark:text-gray-500" />
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search courses, books, exams..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-64 lg:w-80 pl-10 pr-4 py-2.5 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                className="w-64 lg:w-80 pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
           </form>
@@ -85,17 +92,24 @@ const TopNavbar = ({ onSidebarToggle }) => {
         {/* Right Section */}
         <div className="flex items-center space-x-4">
           {/* Dark Mode Toggle */}
-          <div className="flex items-center">
-            <ThemeToggleSwitch />
-          </div>
+          <button
+            onClick={toggleDarkMode}
+            className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors"
+          >
+            {isDarkMode ? (
+              <SunIcon className="w-5 h-5 text-gray-600" />
+            ) : (
+              <MoonIcon className="w-5 h-5 text-gray-600" />
+            )}
+          </button>
 
           {/* Notifications */}
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="relative w-10 h-10 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors"
             >
-              <BellIcon className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+              <BellIcon className="w-6 h-6 text-gray-600" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
                   {unreadCount}
@@ -105,27 +119,27 @@ const TopNavbar = ({ onSidebarToggle }) => {
 
             {/* Notifications Dropdown */}
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2 z-50">
-                <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">Notifications</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{unreadCount} unread messages</p>
+              <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50">
+                <div className="px-4 py-3 border-b border-gray-200">
+                  <h3 className="font-semibold text-gray-900">Notifications</h3>
+                  <p className="text-sm text-gray-600">{unreadCount} unread messages</p>
                 </div>
                 <div className="max-h-80 overflow-y-auto">
                   {notifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className={`px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer border-l-4 ${
-                        notification.unread ? 'border-blue-500 bg-blue-50/50 dark:bg-blue-900/20' : 'border-transparent'
+                      className={`px-4 py-3 hover:bg-gray-50 cursor-pointer border-l-4 ${
+                        notification.unread ? 'border-blue-500 bg-blue-50/50' : 'border-transparent'
                       }`}
                     >
-                      <h4 className="font-medium text-gray-900 dark:text-white text-sm">{notification.title}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{notification.message}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">{notification.time}</p>
+                      <h4 className="font-medium text-gray-900 text-sm">{notification.title}</h4>
+                      <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
+                      <p className="text-xs text-gray-500 mt-2">{notification.time}</p>
                     </div>
                   ))}
                 </div>
-                <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-                  <button className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium">
+                <div className="px-4 py-3 border-t border-gray-200">
+                  <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">
                     View all notifications
                   </button>
                 </div>
@@ -137,7 +151,7 @@ const TopNavbar = ({ onSidebarToggle }) => {
           <div className="relative">
             <button
               onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-              className="flex items-center space-x-3 px-3 py-2 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="flex items-center space-x-3 px-3 py-2 rounded-xl hover:bg-gray-100 transition-colors"
             >
               <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-emerald-600 rounded-full flex items-center justify-center">
                 <span className="text-white font-medium text-sm">
@@ -145,19 +159,19 @@ const TopNavbar = ({ onSidebarToggle }) => {
                 </span>
               </div>
               <div className="hidden sm:block text-left">
-                <p className="font-medium text-gray-900 dark:text-white text-sm">{user?.name || 'Student'}</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">Student</p>
+                <p className="font-medium text-gray-900 text-sm">{user?.name || 'Student'}</p>
+                <p className="text-xs text-gray-600">Student</p>
               </div>
-              <ChevronDownIcon className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+              <ChevronDownIcon className="w-4 h-4 text-gray-600" />
             </button>
 
             {/* Profile Dropdown Menu */}
             {showProfileDropdown && (
-              <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 py-2 z-50">
-                <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-                  <p className="font-medium text-gray-900 dark:text-white">{user?.name || 'Student Name'}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">{user?.email || 'student@example.com'}</p>
-                  <p className="text-xs text-gray-500 dark:text-gray-500">ID: {user?.student_id || 'Loading...'}</p>
+              <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-gray-200 py-2 z-50">
+                <div className="px-4 py-3 border-b border-gray-200">
+                  <p className="font-medium text-gray-900">{user?.name || 'Student Name'}</p>
+                  <p className="text-sm text-gray-600">{user?.email || 'student@example.com'}</p>
+                  <p className="text-xs text-gray-500">ID: {user?.student_id || 'Loading...'}</p>
                 </div>
                 
                 <div className="py-2">
@@ -166,10 +180,10 @@ const TopNavbar = ({ onSidebarToggle }) => {
                       setShowProfileDropdown(false);
                       // Navigate to profile
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-gray-50 transition-colors"
                   >
-                    <UserCircleIcon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                    <span className="text-gray-700 dark:text-gray-300">Profile</span>
+                    <UserCircleIcon className="w-5 h-5 text-gray-600" />
+                    <span className="text-gray-700">Profile</span>
                   </button>
                   
                   <button
@@ -177,17 +191,17 @@ const TopNavbar = ({ onSidebarToggle }) => {
                       setShowProfileDropdown(false);
                       // Navigate to settings
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                    className="w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-gray-50 transition-colors"
                   >
-                    <Cog6ToothIcon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                    <span className="text-gray-700 dark:text-gray-300">Settings</span>
+                    <Cog6ToothIcon className="w-5 h-5 text-gray-600" />
+                    <span className="text-gray-700">Settings</span>
                   </button>
                 </div>
                 
-                <div className="border-t border-gray-200 dark:border-gray-700 pt-2">
+                <div className="border-t border-gray-200 pt-2">
                   <button
                     onClick={handleLogout}
-                    className="w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-red-600 dark:text-red-400"
+                    className="w-full flex items-center space-x-3 px-4 py-2 text-left hover:bg-red-50 transition-colors text-red-600"
                   >
                     <ArrowRightOnRectangleIcon className="w-5 h-5" />
                     <span>Logout</span>

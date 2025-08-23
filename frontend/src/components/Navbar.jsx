@@ -59,12 +59,16 @@ const Navbar = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-2xl flex items-center justify-center shadow-soft group-hover:shadow-lg transition-all duration-200 transform group-hover:scale-105">
-              <span className="text-white font-bold text-xl">J</span>
+            <div className="w-12 h-12 flex items-center justify-center group-hover:scale-105 transition-all duration-200">
+              <img 
+                src="/jnana-siri-logo.png" 
+                alt="Jnana Siri Educational Institute" 
+                className="w-12 h-12 object-contain"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-neutral-800">Janashiri Institute</span>
-              <span className="text-xs text-neutral-500 -mt-1">Excellence in Education</span>
+              <span className="text-xl font-bold text-neutral-800">Jnana Siri</span>
+              <span className="text-xs text-neutral-500 -mt-1">Online Education Center</span>
             </div>
           </Link>
 
@@ -154,12 +158,16 @@ const Navbar = () => {
               <div className="p-6">
                 {/* Mobile Logo */}
                 <div className="flex items-center space-x-3 mb-6 pb-6 border-b border-neutral-200">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-secondary-500 rounded-xl flex items-center justify-center shadow-soft">
-                    <span className="text-white font-bold text-lg">J</span>
+                  <div className="w-10 h-10 flex items-center justify-center">
+                    <img 
+                      src="/jnana-siri-logo.png" 
+                      alt="Jnana Siri Educational Institute" 
+                      className="w-10 h-10 object-contain"
+                    />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-lg font-bold text-neutral-800">Janashiri</span>
-                    <span className="text-xs text-neutral-500">Excellence in Education</span>
+                    <span className="text-lg font-bold text-neutral-800">Jnana Siri</span>
+                    <span className="text-xs text-neutral-500">Online Education Center</span>
                   </div>
                 </div>
 

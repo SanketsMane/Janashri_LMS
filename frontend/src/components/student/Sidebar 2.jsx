@@ -90,14 +90,14 @@ const Sidebar = ({ isOpen, onToggle, onClose, onCollapse }) => {
       {/* Sidebar */}
       <aside
         className={`
-          fixed top-0 left-0 h-full bg-white dark:bg-gray-900 shadow-2xl border-r border-gray-200 dark:border-gray-700 z-50 transition-all duration-300 ease-in-out
+          fixed top-0 left-0 h-full bg-white shadow-2xl border-r border-gray-200 z-50 transition-all duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           ${isCollapsed ? 'w-20' : 'w-72'}
           lg:translate-x-0 lg:z-30
         `}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
           {!isCollapsed && (
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
@@ -108,8 +108,8 @@ const Sidebar = ({ isOpen, onToggle, onClose, onCollapse }) => {
                 />
               </div>
               <div className="flex flex-col justify-center">
-                <h2 className="text-lg font-extrabold text-gray-900 dark:text-white leading-tight tracking-wide">Jnana Siri</h2>
-                <p className="text-xs font-medium text-gray-500 dark:text-gray-400 leading-tight tracking-wider uppercase">Learning Portal</p>
+                <h2 className="text-lg font-extrabold text-gray-900 leading-tight tracking-wide">Jnana Siri</h2>
+                <p className="text-xs font-medium text-gray-500 leading-tight tracking-wider uppercase">Learning Portal</p>
               </div>
             </div>
           )}
@@ -130,9 +130,9 @@ const Sidebar = ({ isOpen, onToggle, onClose, onCollapse }) => {
             {/* Close Button (Mobile) */}
             <button
               onClick={onClose}
-              className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
             >
-              <XMarkIcon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+              <XMarkIcon className="w-5 h-5 text-gray-600" />
             </button>
           </div>
         </div>
@@ -152,7 +152,7 @@ const Sidebar = ({ isOpen, onToggle, onClose, onCollapse }) => {
                   group flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-200 hover:scale-105
                   ${isActive 
                     ? 'bg-gradient-to-r from-blue-600 to-emerald-600 text-white shadow-lg' 
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    : 'text-gray-700 hover:bg-gray-100'
                   }
                   ${isCollapsed ? 'justify-center' : ''}
                 `}
@@ -160,11 +160,11 @@ const Sidebar = ({ isOpen, onToggle, onClose, onCollapse }) => {
                 <Icon 
                   className={`
                     w-6 h-6 flex-shrink-0 transition-colors
-                    ${isActive ? 'text-white' : 'text-gray-600 dark:text-gray-400 group-hover:text-blue-600'}
+                    ${isActive ? 'text-white' : 'text-gray-600 group-hover:text-blue-600'}
                   `} 
                 />
                 {!isCollapsed && (
-                  <span className={`font-medium ${isActive ? 'text-white' : 'text-gray-700 dark:text-gray-300'}`}>
+                  <span className={`font-medium ${isActive ? 'text-white' : 'text-gray-700'}`}>
                     {item.name}
                   </span>
                 )}

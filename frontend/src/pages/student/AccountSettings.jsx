@@ -130,16 +130,16 @@ const AccountSettings = () => {
         {/* Header */}
         <div className="mb-8">
           <div className="flex items-center space-x-3 mb-2">
-            <CogIcon className="w-8 h-8 text-primary-600" />
-            <h1 className="text-3xl font-bold text-neutral-900">Account Settings</h1>
+            <CogIcon className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+            <h1 className="text-3xl font-bold text-neutral-900 dark:text-white">Account Settings</h1>
           </div>
-          <p className="text-neutral-600">Manage your account preferences and security settings</p>
+          <p className="text-neutral-600 dark:text-gray-400">Manage your account preferences and security settings</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-neutral-200 dark:border-gray-700">
               <div className="space-y-2">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
@@ -150,14 +150,14 @@ const AccountSettings = () => {
                       className={`w-full text-left p-4 rounded-xl transition-all duration-200 ${
                         activeTab === tab.id
                           ? 'bg-primary-50 text-primary-700 border border-primary-200'
-                          : 'text-neutral-600 hover:bg-neutral-50'
+                          : 'text-neutral-600 dark:text-gray-400 hover:bg-neutral-50 dark:hover:bg-gray-700'
                       }`}
                     >
                       <div className="flex items-center space-x-3">
                         <Icon className="w-5 h-5" />
                         <div>
                           <div className="font-medium">{tab.name}</div>
-                          <div className="text-sm text-neutral-500">{tab.description}</div>
+                          <div className="text-sm text-neutral-500 dark:text-gray-500">{tab.description}</div>
                         </div>
                       </div>
                     </button>
@@ -169,19 +169,19 @@ const AccountSettings = () => {
 
           {/* Main Content */}
           <div className="lg:col-span-3">
-            <div className="bg-white rounded-2xl shadow-sm border border-neutral-200">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-neutral-200 dark:border-gray-700">
               
               {/* Security Tab */}
               {activeTab === 'security' && (
                 <div className="p-8">
                   <div className="flex items-center space-x-3 mb-6">
-                    <ShieldCheckIcon className="w-6 h-6 text-primary-600" />
-                    <h2 className="text-2xl font-bold text-neutral-900">Security Settings</h2>
+                    <ShieldCheckIcon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                    <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Security Settings</h2>
                   </div>
 
                   <form onSubmit={handlePasswordChange} className="space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                         Current Password
                       </label>
                       <div className="relative">
@@ -196,7 +196,7 @@ const AccountSettings = () => {
                         <button
                           type="button"
                           onClick={() => setShowPassword({...showPassword, current: !showPassword.current})}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 dark:text-gray-500 hover:text-neutral-600 dark:hover:text-gray-400"
                         >
                           {showPassword.current ? <EyeSlashIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
                         </button>
@@ -204,7 +204,7 @@ const AccountSettings = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                         New Password
                       </label>
                       <div className="relative">
@@ -219,7 +219,7 @@ const AccountSettings = () => {
                         <button
                           type="button"
                           onClick={() => setShowPassword({...showPassword, new: !showPassword.new})}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 dark:text-gray-500 hover:text-neutral-600 dark:hover:text-gray-400"
                         >
                           {showPassword.new ? <EyeSlashIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
                         </button>
@@ -227,7 +227,7 @@ const AccountSettings = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-2">
+                      <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                         Confirm New Password
                       </label>
                       <div className="relative">
@@ -242,7 +242,7 @@ const AccountSettings = () => {
                         <button
                           type="button"
                           onClick={() => setShowPassword({...showPassword, confirm: !showPassword.confirm})}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400 dark:text-gray-500 hover:text-neutral-600 dark:hover:text-gray-400"
                         >
                           {showPassword.confirm ? <EyeSlashIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
                         </button>
@@ -267,19 +267,21 @@ const AccountSettings = () => {
               {activeTab === 'notifications' && (
                 <div className="p-8">
                   <div className="flex items-center space-x-3 mb-6">
-                    <BellIcon className="w-6 h-6 text-primary-600" />
-                    <h2 className="text-2xl font-bold text-neutral-900">Notification Preferences</h2>
+                    <BellIcon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                    <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Notification Preferences</h2>
                   </div>
 
                   <div className="space-y-6">
                     {Object.entries(notificationSettings).map(([key, value]) => (
-                      <div key={key} className="flex items-center justify-between p-4 bg-neutral-50 rounded-xl">
+                      <div key={key} className="flex items-center justify-between p-4 bg-neutral-50 dark:bg-gray-700 rounded-xl">
                         <div>
-                          <h3 className="font-medium text-neutral-900 capitalize">
+                          <h3 className="font-medium text-neutral-900 dark:text-white capitalize">
                             {key.replace(/([A-Z])/g, ' $1').trim()}
                           </h3>
-                          <p className="text-sm text-neutral-600">
+                          <p className="text-sm text-neutral-600 dark:text-gray-400">
+                                                      <p className="text-sm text-neutral-600 dark:text-gray-400">
                             {getNotificationDescription(key)}
+                          </p>
                           </p>
                         </div>
                         <label className="relative inline-flex items-center cursor-pointer">
@@ -301,17 +303,17 @@ const AccountSettings = () => {
               {activeTab === 'privacy' && (
                 <div className="p-8">
                   <div className="flex items-center space-x-3 mb-6">
-                    <EyeIcon className="w-6 h-6 text-primary-600" />
-                    <h2 className="text-2xl font-bold text-neutral-900">Privacy Settings</h2>
+                    <EyeIcon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
+                    <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">Privacy Settings</h2>
                   </div>
 
                   <div className="space-y-6">
                     {Object.entries(privacySettings).map(([key, value]) => (
-                      <div key={key} className="p-4 bg-neutral-50 rounded-xl">
-                        <h3 className="font-medium text-neutral-900 mb-2 capitalize">
+                      <div key={key} className="p-4 bg-neutral-50 dark:bg-gray-700 rounded-xl">
+                        <h3 className="font-medium text-neutral-900 dark:text-white mb-2 capitalize">
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </h3>
-                        <p className="text-sm text-neutral-600 mb-3">
+                        <p className="text-sm text-neutral-600 dark:text-gray-400 mb-3">
                           {getPrivacyDescription(key)}
                         </p>
                         <select

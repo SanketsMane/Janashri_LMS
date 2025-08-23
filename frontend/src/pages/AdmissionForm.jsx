@@ -220,7 +220,7 @@ const AdmissionForm = () => {
                 Application Submitted Successfully!
               </h1>
               <p className="text-lg text-neutral-600 mb-8">
-                Thank you for applying to Janashiri Institute. We have received your application 
+                Thank you for applying to Jnana Siri Educational Institute. We have received your application 
                 and will review it within 2-3 business days.
               </p>
               <div className="space-y-4">
@@ -308,7 +308,7 @@ const AdmissionForm = () => {
               Admission Application
             </h1>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Take the first step towards your bright future at Janashiri Institute. 
+                            Take the first step towards your bright future at Jnana Siri Educational Institute. 
               Complete your admission application below.
             </p>
           </div>

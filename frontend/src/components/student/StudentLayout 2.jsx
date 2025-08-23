@@ -19,7 +19,7 @@ const StudentLayout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen bg-gray-50">
       {/* Sidebar */}
       <Sidebar 
         isOpen={sidebarOpen} 
@@ -36,7 +36,7 @@ const StudentLayout = ({ children }) => {
         <TopNavbar onSidebarToggle={handleSidebarToggle} />
         
         {/* Page Content */}
-        <main className="flex-1 p-4 lg:p-8 bg-gray-50 dark:bg-gray-900 transition-colors">
+        <main className="flex-1 p-4 lg:p-8">
           {children}
         </main>
       </div>

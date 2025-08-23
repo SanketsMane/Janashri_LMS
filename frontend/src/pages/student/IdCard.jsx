@@ -132,10 +132,10 @@ const IdCard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+      <div className="min-h-screen bg-neutral-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <div className="loading mx-auto mb-4"></div>
-          <p className="text-neutral-600">Loading your ID card...</p>
+          <p className="text-neutral-600 dark:text-gray-400">Loading your ID card...</p>
         </div>
       </div>
     );
@@ -143,11 +143,11 @@ const IdCard = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-neutral-50 flex items-center justify-center">
+      <div className="min-h-screen bg-neutral-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
           <ExclamationTriangleIcon className="w-16 h-16 text-red-500 mx-auto mb-4" />
-          <h2 className="text-xl font-bold text-neutral-900 mb-2">Error Loading ID Card</h2>
-          <p className="text-neutral-600 mb-4">{error}</p>
+          <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">Error Loading ID Card</h2>
+          <p className="text-neutral-600 dark:text-gray-400 mb-4">{error}</p>
           <button 
             onClick={() => window.location.reload()} 
             className="btn-primary"
@@ -190,15 +190,15 @@ const IdCard = () => {
           {/* ID Card Preview */}
           <div className="space-y-8">
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-neutral-900 mb-4">ID Card Preview</h2>
-              <p className="text-neutral-600">Your official student identification card</p>
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-4">ID Card Preview</h2>
+              <p className="text-neutral-600 dark:text-gray-400">Your official student identification card</p>
             </div>
 
             {/* Enhanced ID Card Design with Better Spacing */}
             <div className="flex justify-center">
               <div 
                 ref={cardRef} 
-                className="transform hover:scale-105 transition-all duration-300 hover:shadow-2xl bg-white relative"
+                className="transform hover:scale-105 transition-all duration-300 hover:shadow-2xl bg-white relative border border-gray-200 dark:border-gray-600"
                 style={{
                   width: '380px',
                   height: '540px',
@@ -253,15 +253,23 @@ const IdCard = () => {
                       <div style={{
                         width: '50px',
                         height: '50px',
-                        background: 'rgba(255,255,255,0.2)',
                         borderRadius: '12px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginRight: '15px',
-                        backdropFilter: 'blur(10px)'
+                        background: 'white',
+                        padding: '4px'
                       }}>
-                        <AcademicCapIcon style={{ width: '28px', height: '28px', color: 'white' }} />
+                        <img 
+                          src="/jnana-siri-logo.png" 
+                          alt="Jnana Siri Logo" 
+                          style={{ 
+                            width: '42px', 
+                            height: '42px', 
+                            objectFit: 'contain' 
+                          }} 
+                        />
                       </div>
                       <div>
                         <h3 style={{
@@ -270,7 +278,7 @@ const IdCard = () => {
                           margin: 0,
                           letterSpacing: '1px'
                         }}>
-                          JANASHIRI INSTITUTE
+                          JNANA SIRI INSTITUTE
                         </h3>
                         <p style={{
                           fontSize: '12px',
@@ -553,7 +561,7 @@ const IdCard = () => {
                   </h4>
                 </div>
                 <div style={{ fontSize: '10px', lineHeight: '1.4', color: '#4b5563' }}>
-                  <div style={{ marginBottom: '6px' }}>• This card is the property of Janashiri Institute</div>
+                  <div style={{ marginBottom: '6px' }}>• This card is the property of Jnana Siri Educational Institute</div>
                   <div style={{ marginBottom: '6px' }}>• Must be carried at all times on campus</div>
                   <div style={{ marginBottom: '6px' }}>• Report loss immediately to administration</div>
                   <div style={{ marginBottom: '6px' }}>• Valid for current academic year</div>
@@ -567,7 +575,7 @@ const IdCard = () => {
                   fontSize: '9px',
                   color: '#6b7280'
                 }}>
-                  <p>For queries: info@janashiriinstitute.edu</p>
+                  <p>For queries: info@jnanasiri.edu</p>
                   <p>Emergency: +91 98765 43210</p>
                 </div>
               </div>
@@ -579,7 +587,7 @@ const IdCard = () => {
             {/* Action Buttons */}
             <div className="card">
               <div className="card-header">
-                <h3 className="text-xl font-bold text-neutral-900">Download & Print</h3>
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Download & Print</h3>
               </div>
               <div className="card-body space-y-4">
                 <button
@@ -608,7 +616,7 @@ const IdCard = () => {
                   Print ID Card
                 </button>
                 
-                <div className="text-sm text-neutral-600 mt-4 p-4 bg-neutral-100 rounded-lg">
+                <div className="text-sm text-neutral-600 dark:text-gray-400 mt-4 p-4 bg-neutral-100 dark:bg-gray-700 rounded-lg">
                   <p className="font-medium mb-2">💡 Tips:</p>
                   <ul className="space-y-1 text-xs">
                     <li>• Download as PDF for digital use</li>
@@ -623,38 +631,38 @@ const IdCard = () => {
             {/* Student Information */}
             <div className="card">
               <div className="card-header">
-                <h3 className="text-xl font-bold text-neutral-900">Your Information</h3>
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Your Information</h3>
               </div>
               <div className="card-body space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm font-medium text-neutral-600">Student ID</p>
-                    <p className="text-lg font-semibold text-primary-600">
+                    <p className="text-sm font-medium text-neutral-600 dark:text-gray-400">Student ID</p>
+                    <p className="text-lg font-semibold text-primary-600 dark:text-primary-400">
                       {studentData?.studentId || 'N/A'}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-neutral-600">Blood Group</p>
-                    <p className="text-lg font-semibold text-red-600">
+                    <p className="text-sm font-medium text-neutral-600 dark:text-gray-400">Blood Group</p>
+                    <p className="text-lg font-semibold text-red-600 dark:text-red-400">
                       {studentData?.bloodGroup || 'N/A'}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-neutral-600">Course</p>
-                    <p className="text-base font-medium text-neutral-900">
+                    <p className="text-sm font-medium text-neutral-600 dark:text-gray-400">Course</p>
+                    <p className="text-base font-medium text-neutral-900 dark:text-white">
                       {studentData?.standard || 'N/A'}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-neutral-600">Valid Until</p>
-                    <p className="text-base font-medium text-neutral-900">
+                    <p className="text-sm font-medium text-neutral-600 dark:text-gray-400">Valid Until</p>
+                    <p className="text-base font-medium text-neutral-900 dark:text-white">
                       {studentData?.validUntil || 'N/A'}
                     </p>
                   </div>
                 </div>
                 
-                <div className="pt-4 border-t border-neutral-200">
-                  <div className="flex items-center space-x-2 text-sm text-neutral-600">
+                <div className="pt-4 border-t border-neutral-200 dark:border-gray-700">
+                  <div className="flex items-center space-x-2 text-sm text-neutral-600 dark:text-gray-400">
                     <CalendarDaysIcon className="w-4 h-4" />
                     <span>Issued on: {studentData?.issueDate || 'N/A'}</span>
                   </div>
@@ -665,25 +673,25 @@ const IdCard = () => {
             {/* Security Features */}
             <div className="card">
               <div className="card-header">
-                <h3 className="text-xl font-bold text-neutral-900">Security Features</h3>
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white">Security Features</h3>
               </div>
               <div className="card-body">
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm text-neutral-700">Holographic Design</span>
+                    <span className="text-sm text-neutral-700 dark:text-gray-300">Holographic Design</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm text-neutral-700">Unique Student ID</span>
+                    <span className="text-sm text-neutral-700 dark:text-gray-300">Unique Student ID</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm text-neutral-700">Official Institute Seal</span>
+                    <span className="text-sm text-neutral-700 dark:text-gray-300">Official Institute Seal</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm text-neutral-700">Tamper-Proof Material</span>
+                    <span className="text-sm text-neutral-700 dark:text-gray-300">Tamper-Proof Material</span>
                   </div>
                 </div>
               </div>

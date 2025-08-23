@@ -15,35 +15,35 @@ const Home = () => {
   const features = [
     {
       icon: AcademicCapIcon,
-      title: 'Excellence in Education',
-      description: 'Comprehensive curriculum designed to nurture academic excellence and character development with personalized attention.',
+      title: 'Flexible Distance Learning',
+      description: 'Comprehensive distance and correspondence education programs designed for working professionals and students seeking flexible pathways.',
       color: 'from-primary-500 to-primary-600'
     },
     {
       icon: UserGroupIcon,
-      title: 'Expert Faculty',
-      description: 'Dedicated and experienced teachers committed to student success, growth, and mentorship.',
+      title: 'Partner Universities',
+      description: 'Access to recognized programs from reputed universities across India with guided admissions support and coordination.',
       color: 'from-secondary-500 to-secondary-600'
     },
     {
       icon: TrophyIcon,
-      title: 'Proven Results',
-      description: '100% pass rate in board examinations with outstanding academic achievements and university placements.',
+      title: 'Proven Track Record',
+      description: 'Years of experience in facilitating quality distance education with successful student placements and career advancement.',
       color: 'from-yellow-500 to-orange-500'
     },
     {
       icon: SparklesIcon,
-      title: 'Modern Facilities',
-      description: 'State-of-the-art infrastructure with computer labs, library, sports facilities, and smart classrooms.',
+      title: 'Comprehensive Support',
+      description: 'Complete guidance through admissions process with ongoing support throughout your educational journey.',
       color: 'from-purple-500 to-pink-500'
     }
   ];
 
   const achievements = [
-    { number: '15+', label: 'Years of Excellence', icon: CheckBadgeIcon },
-    { number: '2000+', label: 'Students Graduated', icon: AcademicCapIcon },
-    { number: '100%', label: 'Pass Rate', icon: TrophyIcon },
-    { number: '50+', label: 'Expert Faculty', icon: UserGroupIcon }
+    { number: '10+', label: 'Years of Excellence', icon: CheckBadgeIcon },
+    { number: '5000+', label: 'Students Guided', icon: AcademicCapIcon },
+    { number: '25+', label: 'Partner Universities', icon: GlobeAltIcon },
+    { number: '100+', label: 'Programs Available', icon: UserGroupIcon }
   ];
 
   return (
@@ -56,12 +56,12 @@ const Home = () => {
             <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               Welcome to 
               <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                Janashiri Institute
+                Jnana Siri Educational Institute
               </span>
             </h1>
             <p className="text-xl lg:text-2xl mb-8 opacity-95 max-w-3xl mx-auto leading-relaxed">
-              Excellence in Education Since 2010 - Nurturing Future Leaders with 
-              Innovation, Integrity, and Inspiration
+              Upgrade your career with flexible distance learning - Choose from undergraduate, 
+              postgraduate, and diploma programs delivered by reputed universities across India
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -96,11 +96,11 @@ const Home = () => {
               Why Choose Us
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-6">
-              Excellence in Every Aspect
+              Distance Learning Excellence
             </h2>
             <p className="text-lg text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-              We provide comprehensive education with a focus on academic excellence, 
-              character building, and holistic development for the leaders of tomorrow.
+              We facilitate distance and correspondence education with recognized programs from partner universities, 
+              offering flexible schedules for working professionals and personalized guidance throughout your journey.
             </p>
           </div>
 

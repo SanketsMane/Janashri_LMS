@@ -32,6 +32,12 @@
     background-color: #f9fafb;
     color: #111827;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dark body {
+    background-color: #111827;
+    color: #f9fafb;
   }
   
   * {
@@ -85,15 +91,15 @@
   
   /* Cards */
   .card {
-    @apply bg-white rounded-2xl shadow-soft border border-neutral-200 transition-all duration-200 hover:shadow-lg;
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-soft border border-neutral-200 dark:border-gray-700 transition-all duration-200 hover:shadow-lg;
   }
   
   .card-glass {
-    @apply backdrop-blur-glass bg-white/20 border border-white/20 rounded-2xl shadow-glass;
+    @apply backdrop-blur-glass bg-white/20 dark:bg-gray-800/20 border border-white/20 dark:border-gray-700/20 rounded-2xl shadow-glass;
   }
   
   .card-header {
-    @apply p-6 border-b border-neutral-200;
+    @apply p-6 border-b border-neutral-200 dark:border-gray-700;
   }
   
   .card-body {
@@ -110,11 +116,11 @@
   }
   
   .form-label {
-    @apply block text-sm font-medium text-neutral-700 mb-2;
+    @apply block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2;
   }
   
   .form-input {
-    @apply w-full px-4 py-3 border border-neutral-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white;
+    @apply w-full px-4 py-3 border border-neutral-300 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
   }
   
   .form-textarea {
@@ -126,7 +132,11 @@
   }
   
   .form-checkbox {
-    @apply rounded border-neutral-300 text-primary-600 focus:ring-primary-500 focus:ring-offset-0;
+    @apply rounded border-neutral-300 dark:border-gray-600 text-primary-600 focus:ring-primary-500 focus:ring-offset-0 bg-white dark:bg-gray-800;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-neutral-300 dark:border-gray-600 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400;
   }
   
   /* Navigation */

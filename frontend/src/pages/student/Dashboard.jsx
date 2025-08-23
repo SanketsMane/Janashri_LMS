@@ -144,18 +144,18 @@ const StudentDashboard = () => {
             return (
               <div 
                 key={index} 
-                className="bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-300 group hover:scale-105"
+                className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 group hover:scale-105"
               >
                 <div className="flex items-center justify-between mb-3 lg:mb-4">
                   <div className={`w-10 h-10 lg:w-12 lg:h-12 ${stat.bgColor} rounded-lg lg:rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <Icon className={`w-5 h-5 lg:w-6 lg:h-6 ${stat.textColor}`} />
                   </div>
                   <div className="text-right">
-                    <p className="text-xl lg:text-2xl font-bold text-gray-900">{stat.value}</p>
-                    <p className="text-xs lg:text-sm text-gray-600">{stat.subtext}</p>
+                    <p className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
+                    <p className="text-xs lg:text-sm text-gray-600 dark:text-gray-400">{stat.subtext}</p>
                   </div>
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm lg:text-base">{stat.label}</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-white text-sm lg:text-base">{stat.label}</h3>
               </div>
             );
           })}
@@ -166,12 +166,12 @@ const StudentDashboard = () => {
           {/* Left Column - Course Progress & Recent Activity */}
           <div className="xl:col-span-2 space-y-6 lg:space-y-8">
             {/* Course Progress */}
-            <div className="bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between mb-4 lg:mb-6">
-                <h2 className="text-lg lg:text-xl font-bold text-gray-900">Course Progress</h2>
+                <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">Course Progress</h2>
                 <Link 
                   to="/student/courses"
-                  className="text-blue-600 hover:text-blue-700 font-medium flex items-center space-x-1 text-sm"
+                  className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium flex items-center space-x-1 text-sm"
                 >
                   <span>View All</span>
                   <ArrowRightIcon className="w-4 h-4" />
@@ -183,10 +183,10 @@ const StudentDashboard = () => {
                     <div key={index} className="flex items-center justify-between">
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium text-gray-900 text-sm lg:text-base">{course.name}</h4>
-                          <span className="text-sm font-medium text-gray-600">{course.progress}%</span>
+                          <h4 className="font-medium text-gray-900 dark:text-white text-sm lg:text-base">{course.name}</h4>
+                          <span className="text-sm font-medium text-gray-600 dark:text-gray-400">{course.progress}%</span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                           <div 
                             className={`${course.color} rounded-full h-2 transition-all duration-500`}
                             style={{ width: `${course.progress}%` }}
@@ -197,9 +197,9 @@ const StudentDashboard = () => {
                   ))
                 ) : (
                   <div className="text-center py-8">
-                    <BookOpenIcon className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">No courses enrolled yet</p>
-                    <p className="text-sm text-gray-400 mt-1">Browse our course catalog to get started</p>
+                    <BookOpenIcon className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                    <p className="text-gray-500 dark:text-gray-400">No courses enrolled yet</p>
+                    <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Browse our course catalog to get started</p>
                     <Link
                       to="/student/courses"
                       className="inline-flex items-center space-x-2 mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
@@ -213,10 +213,10 @@ const StudentDashboard = () => {
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between mb-4 lg:mb-6">
-                <h2 className="text-lg lg:text-xl font-bold text-gray-900">Recent Activity</h2>
-                <button className="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white">Recent Activity</h2>
+                <button className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium text-sm">
                   View All
                 </button>
               </div>
@@ -225,14 +225,14 @@ const StudentDashboard = () => {
                   recentActivities.map((activity) => {
                     const Icon = activity.icon;
                     return (
-                      <div key={activity.id} className="flex items-start space-x-3 lg:space-x-4 p-3 lg:p-4 hover:bg-gray-50 rounded-xl transition-colors">
+                      <div key={activity.id} className="flex items-start space-x-3 lg:space-x-4 p-3 lg:p-4 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors">
                         <div className={`w-8 h-8 lg:w-10 lg:h-10 ${activity.color} rounded-lg lg:rounded-xl flex items-center justify-center flex-shrink-0`}>
                           <Icon className="w-4 h-4 lg:w-5 lg:h-5 text-white" />
                         </div>
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-gray-900 text-sm lg:text-base">{activity.title}</h4>
-                          <p className="text-sm text-gray-600 mt-1">{activity.description}</p>
-                          <p className="text-xs text-gray-500 mt-2">{activity.time}</p>
+                          <h4 className="font-medium text-gray-900 dark:text-white text-sm lg:text-base">{activity.title}</h4>
+                          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{activity.description}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">{activity.time}</p>
                         </div>
                       </div>
                     );
@@ -251,24 +251,24 @@ const StudentDashboard = () => {
           {/* Right Column - Upcoming Events & Quick Actions */}
           <div className="space-y-6 lg:space-y-8">
             {/* Upcoming Events */}
-            <div className="bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200">
+            <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
               <div className="flex items-center justify-between mb-4 lg:mb-6">
-                <h2 className="text-lg font-bold text-gray-900">Upcoming Events</h2>
-                <CalendarDaysIcon className="w-5 h-5 text-gray-600" />
+                <h2 className="text-lg font-bold text-gray-900 dark:text-white">Upcoming Events</h2>
+                <CalendarDaysIcon className="w-5 h-5 text-gray-600 dark:text-gray-400" />
               </div>
               <div className="space-y-3 lg:space-y-4">
                 {upcomingEvents.length > 0 ? (
                   upcomingEvents.map((event) => (
-                    <div key={event.id} className="border-l-4 border-blue-500 pl-3 lg:pl-4 py-2">
+                    <div key={event.id} className="border-l-4 border-blue-500 dark:border-blue-400 pl-3 lg:pl-4 py-2">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h4 className="font-medium text-gray-900 text-sm">{event.title}</h4>
-                          <p className="text-xs text-gray-600 mt-1">{event.date} at {event.time}</p>
+                          <h4 className="font-medium text-gray-900 dark:text-white text-sm">{event.title}</h4>
+                          <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">{event.date} at {event.time}</p>
                         </div>
                         <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          event.priority === 'high' ? 'bg-red-100 text-red-700' :
-                          event.priority === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                          'bg-green-100 text-green-700'
+                          event.priority === 'high' ? 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400' :
+                          event.priority === 'medium' ? 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400' :
+                          'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
                         }`}>
                           {event.priority}
                         </span>
@@ -277,23 +277,23 @@ const StudentDashboard = () => {
                   ))
                 ) : (
                   <div className="text-center py-8">
-                    <CalendarDaysIcon className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">No upcoming events</p>
-                    <p className="text-sm text-gray-400 mt-1">Your schedule is clear for now</p>
+                    <CalendarDaysIcon className="w-12 h-12 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+                    <p className="text-gray-500 dark:text-gray-400">No upcoming events</p>
+                    <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Your schedule is clear for now</p>
                   </div>
                 )}
               </div>
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200">
-              <h2 className="text-lg font-bold text-gray-900 mb-4 lg:mb-6">Quick Actions</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl p-4 lg:p-6 shadow-sm border border-gray-200 dark:border-gray-700">
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">Quick Actions</h2>
               <div className="space-y-3">
                 <Link
                   to="/student/id-card"
-                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-blue-50 rounded-xl transition-colors text-blue-600 border border-blue-200"
+                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-xl transition-colors text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-600"
                 >
-                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
                     <SparklesIcon className="w-4 h-4" />
                   </div>
                   <span className="font-medium text-sm lg:text-base">Generate ID Card</span>
@@ -301,9 +301,9 @@ const StudentDashboard = () => {
                 
                 <Link
                   to="/student/library"
-                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-emerald-50 rounded-xl transition-colors text-emerald-600 border border-emerald-200"
+                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-xl transition-colors text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-600"
                 >
-                  <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center">
                     <BuildingLibraryIcon className="w-4 h-4" />
                   </div>
                   <span className="font-medium text-sm lg:text-base">Browse Library</span>
@@ -311,9 +311,9 @@ const StudentDashboard = () => {
                 
                 <Link
                   to="/student/exams"
-                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-purple-50 rounded-xl transition-colors text-purple-600 border border-purple-200"
+                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-purple-50 dark:hover:bg-purple-900/20 rounded-xl transition-colors text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-600"
                 >
-                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
                     <DocumentTextIcon className="w-4 h-4" />
                   </div>
                   <span className="font-medium text-sm lg:text-base">View Exams</span>
@@ -321,9 +321,9 @@ const StudentDashboard = () => {
                 
                 <Link
                   to="/student/settings"
-                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 rounded-xl transition-colors text-gray-600 border border-gray-200"
+                  className="w-full flex items-center space-x-3 p-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-600"
                 >
-                  <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div className="w-8 h-8 bg-gray-100 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                     <AcademicCapIcon className="w-4 h-4" />
                   </div>
                   <span className="font-medium text-sm lg:text-base">Account Settings</span>

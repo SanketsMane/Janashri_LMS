@@ -26,25 +26,25 @@ const Contact = () => {
     {
       icon: PhoneIcon,
       title: 'Phone Number',
-      details: ['+91 98765 43210', '+91 98765 43211'],
+      details: ['+91 9591 593 227'],
       color: 'from-primary-500 to-primary-600'
     },
     {
       icon: EnvelopeIcon,
       title: 'Email Address',
-      details: ['info@janashiriinstitute.edu', 'admissions@janashiriinstitute.edu'],
+      details: ['contactsanket1@gmail.com'],
       color: 'from-secondary-500 to-secondary-600'
     },
     {
       icon: MapPinIcon,
-      title: 'Location',
-      details: ['123 Education Street', 'Mumbai, Maharashtra 400001'],
+      title: 'Head Office',
+      details: ['NES Road, Magadi Town', 'Karnataka – 562120'],
       color: 'from-orange-500 to-orange-600'
     },
     {
-      icon: ClockIcon,
-      title: 'Office Hours',
-      details: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 9:00 AM - 2:00 PM'],
+      icon: BuildingOfficeIcon,
+      title: 'Bengaluru Office',
+      details: ['11/3, Sunkadakatte, Magadi Main Road', 'Bangalore – 560091'],
       color: 'from-purple-500 to-purple-600'
     }
   ];
@@ -92,8 +92,8 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Get in touch with us for any inquiries, admissions guidance, or support. 
-              We're here to help you on your educational journey.
+              Get in touch with us for any inquiries, admissions guidance, or program information. 
+              We're here to help you start your distance learning journey.
             </p>
           </div>
         </div>
@@ -106,7 +106,8 @@ const Contact = () => {
             <div className="text-center lg:text-left">
               <h2 className="text-3xl font-bold text-neutral-900 mb-4">Send us a Message</h2>
               <p className="text-neutral-600 text-lg leading-relaxed">
-                Fill out the form below and we'll get back to you as soon as possible.
+                Fill out the form below and we'll get back to you as soon as possible to discuss 
+                your distance learning options and program requirements.
               </p>
             </div>
 
@@ -283,7 +284,7 @@ const Contact = () => {
                       <BuildingOfficeIcon className="w-5 h-5 text-white" />
                     </div>
                     <div>
-                      <p className="font-semibold text-neutral-900">Janashiri Institute</p>
+                      <p className="font-semibold text-neutral-900">Jnana Siri Educational Institute</p>
                       <p className="text-sm text-neutral-600">123 Education Street, Mumbai</p>
                     </div>
                   </div>
@@ -299,7 +300,7 @@ const Contact = () => {
               <div className="card-body space-y-4">
                 <div className="flex items-center space-x-3">
                   <GlobeAltIcon className="w-5 h-5 text-primary-600" />
-                  <span className="text-neutral-700">www.janashiriinstitute.edu</span>
+                  <span className="text-neutral-700">www.jnanasiri.edu</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <PhoneIcon className="w-5 h-5 text-secondary-600" />

@@ -136,10 +136,10 @@ const StudentProfile = () => {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-3 mb-2">
-                <UserCircleIcon className="w-8 h-8 text-primary-600" />
-                <h1 className="text-3xl font-bold text-neutral-900">My Profile</h1>
+                <UserCircleIcon className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+                <h1 className="text-3xl font-bold text-neutral-900 dark:text-white">My Profile</h1>
               </div>
-              <p className="text-neutral-600">Manage your personal information and academic details</p>
+              <p className="text-neutral-600 dark:text-gray-400">Manage your personal information and academic details</p>
             </div>
             
             <div className="flex items-center space-x-3">
@@ -178,9 +178,9 @@ const StudentProfile = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Profile Picture and Basic Info */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200 text-center">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-neutral-200 dark:border-gray-700 text-center">
               <div className="relative inline-block mb-4">
-                <div className="w-32 h-32 bg-primary-100 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-32 h-32 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto">
                   {user?.photo?.url ? (
                     <img
                       src={user.photo.url}
@@ -188,7 +188,7 @@ const StudentProfile = () => {
                       className="w-32 h-32 rounded-full object-cover"
                     />
                   ) : (
-                    <UserIcon className="w-16 h-16 text-primary-600" />
+                    <UserIcon className="w-16 h-16 text-primary-600 dark:text-primary-400" />
                   )}
                 </div>
                 
@@ -205,11 +205,11 @@ const StudentProfile = () => {
                 )}
               </div>
               
-              <h2 className="text-xl font-bold text-neutral-900 mb-2">{user?.name}</h2>
-              <p className="text-neutral-600 mb-1">Student ID: {user?.student_id}</p>
-              <p className="text-neutral-600">
+              <h2 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">{user?.name}</h2>
+              <p className="text-neutral-600 dark:text-gray-400 mb-1">Student ID: {user?.student_id}</p>
+              <p className="text-neutral-600 dark:text-gray-400">
                 <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                  user?.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  user?.isActive ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400' : 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400'
                 }`}>
                   {user?.isActive ? 'Active' : 'Inactive'}
                 </span>
@@ -219,14 +219,14 @@ const StudentProfile = () => {
 
           {/* Profile Details */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-sm border border-neutral-200">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-neutral-200 dark:border-gray-700">
               <div className="p-6">
-                <h3 className="text-xl font-bold text-neutral-900 mb-6">Personal Information</h3>
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-6">Personal Information</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Name */}
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       <UserIcon className="w-4 h-4 inline mr-1" />
                       Full Name
                     </label>
@@ -240,23 +240,23 @@ const StudentProfile = () => {
                         placeholder="Enter your full name"
                       />
                     ) : (
-                      <p className="text-neutral-900 py-2">{user?.name || 'Not provided'}</p>
+                      <p className="text-neutral-900 dark:text-white py-2">{user?.name || 'Not provided'}</p>
                     )}
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       <EnvelopeIcon className="w-4 h-4 inline mr-1" />
                       Email Address
                     </label>
-                    <p className="text-neutral-900 py-2">{user?.email}</p>
+                    <p className="text-neutral-900 dark:text-white py-2">{user?.email}</p>
                     <p className="text-xs text-neutral-500">Email cannot be changed</p>
                   </div>
 
                   {/* Mobile */}
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       <PhoneIcon className="w-4 h-4 inline mr-1" />
                       Mobile Number
                     </label>
@@ -270,13 +270,13 @@ const StudentProfile = () => {
                         placeholder="Enter your mobile number"
                       />
                     ) : (
-                      <p className="text-neutral-900 py-2">{user?.mobile || 'Not provided'}</p>
+                      <p className="text-neutral-900 dark:text-white py-2">{user?.mobile || 'Not provided'}</p>
                     )}
                   </div>
 
                   {/* Blood Group */}
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       <HeartIcon className="w-4 h-4 inline mr-1" />
                       Blood Group
                     </label>
@@ -298,13 +298,13 @@ const StudentProfile = () => {
                         <option value="O-">O-</option>
                       </select>
                     ) : (
-                      <p className="text-neutral-900 py-2">{user?.bloodGroup || 'Not provided'}</p>
+                      <p className="text-neutral-900 dark:text-white py-2">{user?.bloodGroup || 'Not provided'}</p>
                     )}
                   </div>
 
                   {/* Standard */}
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       <AcademicCapIcon className="w-4 h-4 inline mr-1" />
                       Standard/Class
                     </label>
@@ -318,13 +318,13 @@ const StudentProfile = () => {
                         placeholder="Enter your standard/class"
                       />
                     ) : (
-                      <p className="text-neutral-900 py-2">{user?.standard || 'Not provided'}</p>
+                      <p className="text-neutral-900 dark:text-white py-2">{user?.standard || 'Not provided'}</p>
                     )}
                   </div>
 
                   {/* Date of Birth */}
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       <CalendarDaysIcon className="w-4 h-4 inline mr-1" />
                       Date of Birth
                     </label>
@@ -337,7 +337,7 @@ const StudentProfile = () => {
                         className="input-field"
                       />
                     ) : (
-                      <p className="text-neutral-900 py-2">
+                      <p className="text-neutral-900 dark:text-white py-2">
                         {user?.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : 'Not provided'}
                       </p>
                     )}
@@ -346,7 +346,7 @@ const StudentProfile = () => {
 
                 {/* Address */}
                 <div className="mt-6">
-                  <label className="block text-sm font-medium text-neutral-700 mb-2">
+                  <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                     <HomeIcon className="w-4 h-4 inline mr-1" />
                     Address
                   </label>
@@ -360,18 +360,18 @@ const StudentProfile = () => {
                       placeholder="Enter your full address"
                     />
                   ) : (
-                    <p className="text-neutral-900 py-2">{user?.address || 'Not provided'}</p>
+                    <p className="text-neutral-900 dark:text-white py-2">{user?.address || 'Not provided'}</p>
                   )}
                 </div>
               </div>
 
               {/* Emergency Contact */}
-              <div className="border-t border-neutral-200 p-6">
-                <h3 className="text-xl font-bold text-neutral-900 mb-6">Emergency Contact</h3>
+              <div className="border-t border-neutral-200 dark:border-gray-700 p-6">
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-6">Emergency Contact</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-neutral-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-700 dark:text-gray-300 mb-2">
                       Contact Name
                     </label>
                     {editing ? (
