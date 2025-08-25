@@ -1,0 +1,65 @@
+service: janashiri-lms-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  timeout: 30
+  memorySize: 512
+  environment:
+    NODE_ENV: production
+    MONGODB_URI: ${env:MONGODB_URI}
+    JWT_SECRET: ${env:JWT_SECRET}
+    FRONTEND_URL: ${env:FRONTEND_URL}
+    EMAIL_HOST: ${env:EMAIL_HOST}
+    EMAIL_PORT: ${env:EMAIL_PORT}
+    EMAIL_USER: ${env:EMAIL_USER}
+    EMAIL_PASS: ${env:EMAIL_PASS}
+    EMAIL_FROM: ${env:EMAIL_FROM}
+    CLOUDINARY_CLOUD_NAME: ${env:CLOUDINARY_CLOUD_NAME}
+    CLOUDINARY_API_KEY: ${env:CLOUDINARY_API_KEY}
+    CLOUDINARY_API_SECRET: ${env:CLOUDINARY_API_SECRET}
+    ADMIN_EMAIL: ${env:ADMIN_EMAIL}
+    ADMIN_PASSWORD: ${env:ADMIN_PASSWORD}
+    TRUST_PROXY: true
+
+functions:
+  api:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-Requested-With
+              - Accept
+              - Origin
+              - X-Access-Token
+            allowCredentials: true
+      - http:
+          path: /
+          method: ANY
+          cors:
+            origin: '*'
+            headers:
+              - Content-Type
+              - Authorization
+              - X-Requested-With
+              - Accept
+              - Origin
+              - X-Access-Token
+            allowCredentials: true
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  serverless-offline:
+    httpPort: 3001
+  dotenv:
+    path: .env.production
