@@ -1,0 +1,13 @@
+{
+  "name": "janashiri-lms",
+  "version": "1.0.0",
+  "description": "Jnana Siri Educational Institute - Learning Management System",
+  "scripts": {
+    "dev": "echo Development mode",
+    "build": "echo Build completed",
+    "start": "echo Start command"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
